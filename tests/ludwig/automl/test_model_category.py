@@ -1,20 +1,16 @@
 import yaml
+from ludwig.constants import INPUT_FEATURES
+from ludwig.automl.model_category import ModelCategory, get_model_category
 
-from ludwig.constants import INPUT_FEATURES, OUTPUT_FEATURES
-from ludwig.automl.default_configs import get_default_gbm_model_with_features
-from ludwig.api import LudwigModel
-
-
-def test_get_default_gbm_model_with_features():
-    config = yaml.safe_load(
-        """
+MULTI_MODAL_CONFIG = yaml.safe_load(
+    """
     input_features:
       - name: default_profile
         type: binary
       - name: default_profile_image
         type: binary
-    #   - name: description
-    #     type: text
+      - name: description
+        type: text
       - name: favourites_count
         type: number
       - name: followers_count
@@ -29,10 +25,10 @@ def test_get_default_gbm_model_with_features():
         type: category
       - name: profile_background_image_path
         type: category
-    #   - name: profile_image_path
-    #     type: image
-        # preprocessing:
-        #   num_channels: 3
+      - name: profile_image_path
+        type: image
+        preprocessing:
+          num_channels: 3
       - name: statuses_count
         type: number
       - name: verified
@@ -45,11 +41,8 @@ def test_get_default_gbm_model_with_features():
       - name: account_type
         type: binary
         """
-    )
+)
 
-    config = get_default_gbm_model_with_features(config[INPUT_FEATURES], config[OUTPUT_FEATURES])
-    from pprint import pprint
 
-    pprint(config)
-
-    LudwigModel(config)
+def test_get_model_category():
+    assert get_model_category(MULTI_MODAL_CONFIG[INPUT_FEATURES]) == ModelCategory.MULTI_MODAL
