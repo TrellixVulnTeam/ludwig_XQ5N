@@ -1,0 +1,10 @@
+defaults:
+  number:
+    preprocessing:
+      normalization: zscore
+trainer:
+  learning_rate: 0.0065641986318142834
+  max_bin: 66153
+  max_depth: 89
+  num_boost_round: 2811
+  num_leaves: 329

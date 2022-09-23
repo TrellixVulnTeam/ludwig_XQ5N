@@ -1,4 +1,4 @@
-from typing import List, Tuple, Union
+from typing import List, Tuple, Union, Dict, Any
 
 import pandas as pd
 import torch
@@ -16,3 +16,6 @@ except ImportError:
 TorchAudioTuple = Tuple[torch.Tensor, int]
 TorchscriptPreprocessingInput = Union[List[str], List[torch.Tensor], List[TorchAudioTuple], torch.Tensor]
 TorchDevice = Union[str, torch.device]
+
+LudwigConfig = Dict[str, Any]
+LudwigFeature = Dict[str, Any]
