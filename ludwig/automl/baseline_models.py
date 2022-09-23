@@ -1,27 +1,27 @@
-from typing import List, Dict
-from dataclasses import dataclass
 import logging
-from copy import deepcopy
-from functools import lru_cache
-import yaml
 import os
+from copy import deepcopy
+from dataclasses import dataclass
+from functools import lru_cache
+from typing import Dict, List
 
-from ludwig.constants import NUMBER, CATEGORY, BINARY, TEXT, INPUT_FEATURES, OUTPUT_FEATURES
+import yaml
+
+from ludwig.automl import generally_good
+from ludwig.automl.default_configs import (
+    get_default_concat_model_with_features,
+    get_default_gbm_model_with_features,
+    get_default_tabnet_model_with_features,
+)
+from ludwig.automl.model_category import get_model_category, ModelCategory
 from ludwig.automl.select_features import (
+    get_image_features,
     get_tabular_features,
     get_tabular_text_features,
     get_text_features,
-    get_image_features,
 )
-from ludwig.automl.model_category import get_model_category, ModelCategory
-from ludwig.automl import generally_good
-from ludwig.automl.default_configs import (
-    get_default_gbm_model_with_features,
-    get_default_concat_model_with_features,
-    get_default_tabnet_model_with_features,
-)
+from ludwig.constants import BINARY, CATEGORY, INPUT_FEATURES, NUMBER, OUTPUT_FEATURES, TEXT
 from ludwig.utils.types import LudwigConfig, LudwigFeature
-
 
 logger = logging.getLogger(__name__)
 
@@ -406,7 +406,8 @@ def get_multi_modal_baseline_configs(
 
 
 def are_baseline_configs_supported(input_features, output_features):
-    """Returns False if there are multiple output features, or if the type of the output feature isn't supported."""
+    """Returns False if there are multiple output features, or if the type of the output feature isn't
+    supported."""
     if len(output_features) > 1:
         return False
     if output_features[0]["type"] not in BASELINE_CONFIGS_SUPPORTED_OUTPUT_TYPES:

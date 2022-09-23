@@ -1,8 +1,6 @@
-import yaml
-
-from ludwig.constants import INPUT_FEATURES, OUTPUT_FEATURES
-from ludwig.automl.default_configs import get_default_concat_model_with_features
 from ludwig.api import LudwigModel
+from ludwig.automl.default_configs import get_default_concat_model_with_features
+from ludwig.constants import INPUT_FEATURES, OUTPUT_FEATURES
 from tests.integration_tests.utils import SAMPLE_MULTI_MODAL_CONFIG
 
 

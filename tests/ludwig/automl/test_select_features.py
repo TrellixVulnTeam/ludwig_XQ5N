@@ -1,5 +1,3 @@
-import yaml
-
 from ludwig.automl import select_features
 from tests.integration_tests.utils import SAMPLE_MULTI_MODAL_CONFIG
 

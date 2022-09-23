@@ -1,8 +1,9 @@
-from ludwig.automl.baseline_models import get_baseline_configs
 from collections import defaultdict
-from ludwig.automl.model_category import ModelCategory
-from ludwig.api import LudwigModel
+
 from ludwig import datasets
+from ludwig.api import LudwigModel
+from ludwig.automl.baseline_models import get_baseline_configs
+from ludwig.automl.model_category import ModelCategory
 from tests.integration_tests.utils import SAMPLE_MULTI_MODAL_CONFIG
 
 

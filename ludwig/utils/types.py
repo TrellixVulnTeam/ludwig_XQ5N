@@ -1,4 +1,4 @@
-from typing import List, Tuple, Union, Dict, Any
+from typing import Any, Dict, List, Tuple, Union
 
 import pandas as pd
 import torch

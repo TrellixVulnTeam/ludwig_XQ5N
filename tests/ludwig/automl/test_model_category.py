@@ -1,6 +1,5 @@
-import yaml
+from ludwig.automl.model_category import get_model_category, ModelCategory
 from ludwig.constants import INPUT_FEATURES
-from ludwig.automl.model_category import ModelCategory, get_model_category
 from tests.integration_tests.utils import SAMPLE_MULTI_MODAL_CONFIG
 
 

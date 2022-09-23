@@ -25,12 +25,12 @@ import unittest
 import uuid
 from distutils.util import strtobool
 from typing import List, Union
-import yaml
 
 import cloudpickle
 import numpy as np
 import pandas as pd
 import torch
+import yaml
 from PIL import Image
 
 from ludwig.api import LudwigModel

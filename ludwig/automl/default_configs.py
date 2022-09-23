@@ -1,15 +1,15 @@
 from typing import List
 
 from ludwig.constants import (
-    MODEL_TYPE,
-    MODEL_GBM,
-    TRAINER,
-    MODEL_ECD,
     COMBINER,
-    TYPE,
-    LIGHTGBM_TRAINER,
     INPUT_FEATURES,
+    LIGHTGBM_TRAINER,
+    MODEL_ECD,
+    MODEL_GBM,
+    MODEL_TYPE,
     OUTPUT_FEATURES,
+    TRAINER,
+    TYPE,
 )
 from ludwig.utils.types import LudwigConfig, LudwigFeature
 

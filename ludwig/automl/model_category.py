@@ -1,6 +1,7 @@
-from typing import List
 from enum import Enum
-from ludwig.constants import TYPE, NUMBER, BINARY, CATEGORY, TEXT, IMAGE
+from typing import List
+
+from ludwig.constants import BINARY, CATEGORY, IMAGE, NUMBER, TEXT, TYPE
 from ludwig.utils.types import LudwigFeature
 
 
