@@ -1,11 +1,11 @@
 import yaml
 
 from ludwig.constants import INPUT_FEATURES, OUTPUT_FEATURES
-from ludwig.automl.default_configs import get_default_gbm_model_with_features
+from ludwig.automl.default_configs import get_default_concat_model_with_features
 from ludwig.api import LudwigModel
 
 
-def test_get_default_gbm_model_with_features():
+def test_get_default_concat_model_with_features():
     config = yaml.safe_load(
         """
     input_features:
@@ -13,8 +13,8 @@ def test_get_default_gbm_model_with_features():
         type: binary
       - name: default_profile_image
         type: binary
-    #   - name: description
-    #     type: text
+      - name: description
+        type: text
       - name: favourites_count
         type: number
       - name: followers_count
@@ -29,10 +29,10 @@ def test_get_default_gbm_model_with_features():
         type: category
       - name: profile_background_image_path
         type: category
-    #   - name: profile_image_path
-    #     type: image
-        # preprocessing:
-        #   num_channels: 3
+      - name: profile_image_path
+        type: image
+        preprocessing:
+          num_channels: 3
       - name: statuses_count
         type: number
       - name: verified
@@ -47,9 +47,6 @@ def test_get_default_gbm_model_with_features():
         """
     )
 
-    config = get_default_gbm_model_with_features(config[INPUT_FEATURES], config[OUTPUT_FEATURES])
-    from pprint import pprint
-
-    pprint(config)
+    config = get_default_concat_model_with_features(config[INPUT_FEATURES], config[OUTPUT_FEATURES])
 
     LudwigModel(config)

@@ -1,9 +1,12 @@
+"""Utilities for subselecting features."""
+
 from typing import List, Set
 from ludwig.utils.types import LudwigFeature
 from ludwig.constants import NUMBER, CATEGORY, BINARY, TEXT, IMAGE
 
 
 def get_features_with_type(features: List[LudwigFeature], accepted_types: Set[str]) -> List[LudwigFeature]:
+    """Returns a list of features that are of one of the accepted types."""
     supported_features = []
     for feature in features:
         if feature["type"] in accepted_types:

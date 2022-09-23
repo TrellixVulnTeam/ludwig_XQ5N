@@ -48,6 +48,7 @@ MULTI_MODAL_CONFIG = yaml.safe_load(
 
 
 def get_config_recommendations_model_category_count(config_recommendations):
+    """Returns a count of the model categories that were recommended."""
     count = defaultdict(int)
     for config_recommendation in config_recommendations:
         count[config_recommendation.model_category] += 1
@@ -55,9 +56,19 @@ def get_config_recommendations_model_category_count(config_recommendations):
 
 
 def get_num_recommendations_with_hyperopt(config_recommendations):
+    """Returns the number of model recommendations with hyperopt."""
     count = 0
     for config_recommendation in config_recommendations:
         if config_recommendation.contains_hyperopt:
+            count += 1
+    return count
+
+
+def get_num_recommendations_with_pretrained_models(config_recommendations):
+    """Returns the number of model recommendations that uses pretrained models."""
+    count = 0
+    for config_recommendation in config_recommendations:
+        if config_recommendation.uses_pretrained_model:
             count += 1
     return count
 
@@ -77,6 +88,7 @@ def test_get_baseline_configs_multi_modal():
         ModelCategory.TEXT: 3,
     }
     assert get_num_recommendations_with_hyperopt(config_recommendations) == 1
+    assert get_num_recommendations_with_pretrained_models(config_recommendations) == 3
 
     # Check that all configs can be validly used to initialize a LudwigModel.
     for config_recommendation in config_recommendations:

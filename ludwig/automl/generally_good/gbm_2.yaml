@@ -8,3 +8,5 @@ trainer:
   max_depth: 369
   num_boost_round: 2811
   num_leaves: 162
+  type: lightgbm_trainer
+model_type: gbm

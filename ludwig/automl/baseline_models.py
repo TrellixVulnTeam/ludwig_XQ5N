@@ -1,4 +1,4 @@
-from typing import List, Dict, Any
+from typing import List, Dict
 from dataclasses import dataclass
 import logging
 from copy import deepcopy
@@ -20,14 +20,10 @@ from ludwig.automl.default_configs import (
     get_default_concat_model_with_features,
     get_default_tabnet_model_with_features,
 )
+from ludwig.utils.types import LudwigConfig, LudwigFeature
 
 
 logger = logging.getLogger(__name__)
-
-# TODO: Replace with config object when it's ready.
-LudwigConfig = Dict[str, Any]
-# TODO: Perhaps should define these types in Ludwig API.
-LudwigFeature = Dict[str, Any]
 
 # Set of output feature types that baseline configurations are supported for.
 BASELINE_CONFIGS_SUPPORTED_OUTPUT_TYPES = {NUMBER, BINARY, CATEGORY}
@@ -150,11 +146,6 @@ def get_text_baseline_model(
 def get_image_input_baseline_models(image_input_features, output_features) -> List[ConfigRecommendation]:
     """Returns a list of config recommendations for image models."""
     config_recommendations = []
-    # config = {
-    #     "trainer": {
-    #         "type": "trainer",
-    #     }
-    # }
     config = {}
     image_input_features_copy = deepcopy(image_input_features)
     for input_feature in image_input_features_copy:

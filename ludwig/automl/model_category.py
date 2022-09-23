@@ -5,7 +5,7 @@ from ludwig.utils.types import LudwigFeature
 
 
 class ModelCategory(str, Enum):
-    """The model category."""
+    """The model category, which is based on the nature of its input features."""
 
     UNKNOWN = "unknown"
     TABULAR = "tabular"
@@ -17,10 +17,12 @@ class ModelCategory(str, Enum):
 
 
 def contains_tabular_features(feature_types: List[str]):
+    """Returns whether any tabular data types are present in the list of features."""
     return NUMBER in feature_types or BINARY in feature_types or CATEGORY in feature_types
 
 
 def get_model_category(input_features: List[LudwigFeature]) -> ModelCategory:
+    """Returns the model category for a model with the given input features."""
     input_feature_types = set()
     for input_feature in input_features:
         input_feature_types.add(input_feature[TYPE])
