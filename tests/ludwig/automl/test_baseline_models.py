@@ -1,50 +1,9 @@
-import yaml
 from ludwig.automl.baseline_models import get_baseline_configs
 from collections import defaultdict
 from ludwig.automl.model_category import ModelCategory
 from ludwig.api import LudwigModel
 from ludwig import datasets
-
-MULTI_MODAL_CONFIG = yaml.safe_load(
-    """
-    input_features:
-      - name: default_profile
-        type: binary
-      - name: default_profile_image
-        type: binary
-      - name: description
-        type: text
-      - name: favourites_count
-        type: number
-      - name: followers_count
-        type: number
-      - name: friends_count
-        type: number
-      - name: geo_enabled
-        type: binary
-      - name: lang
-        type: category
-      - name: location
-        type: category
-      - name: profile_background_image_path
-        type: category
-      - name: profile_image_path
-        type: image
-        preprocessing:
-          num_channels: 3
-      - name: statuses_count
-        type: number
-      - name: verified
-        type: binary
-      - name: average_tweets_per_day
-        type: number
-      - name: account_age_days
-        type: number
-    output_features:
-      - name: account_type
-        type: binary
-        """
-)
+from tests.integration_tests.utils import SAMPLE_MULTI_MODAL_CONFIG
 
 
 def get_config_recommendations_model_category_count(config_recommendations):
@@ -75,7 +34,7 @@ def get_num_recommendations_with_pretrained_models(config_recommendations):
 
 def test_get_baseline_configs_multi_modal():
     config_recommendations = get_baseline_configs(
-        MULTI_MODAL_CONFIG["input_features"], MULTI_MODAL_CONFIG["output_features"]
+        SAMPLE_MULTI_MODAL_CONFIG["input_features"], SAMPLE_MULTI_MODAL_CONFIG["output_features"]
     )
 
     model_category_count = get_config_recommendations_model_category_count(config_recommendations)
