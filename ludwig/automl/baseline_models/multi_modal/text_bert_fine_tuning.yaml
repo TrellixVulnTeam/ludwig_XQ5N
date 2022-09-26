@@ -1,0 +1,11 @@
+config:
+  defaults:
+    text:
+      encoder:
+        type: bert
+        trainable: true
+  trainer:
+    epochs: 5
+    learning_rate_warmup_epochs: 0
+    optimizer:
+      type: adamw

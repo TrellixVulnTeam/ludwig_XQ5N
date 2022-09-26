@@ -1,0 +1,4 @@
+description: Basic vision model using 1-layer CNN(s).
+model_category: IMAGE
+contains_hyperopt: false
+uses_pretrained_model: false

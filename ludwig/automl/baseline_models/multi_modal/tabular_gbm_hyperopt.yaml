@@ -1,0 +1,24 @@
+description: Default GBM model, with a small sweep over num_boost_round and learning_rate.
+model_category: TABULAR
+contains_hyperopt: true
+uses_pretrained_model: false
+config:
+  hyperopt:
+    parameters:
+      trainer.learning_rate:
+        space: grid_search
+        values:
+          - 0.001
+          - 0.01
+          - 0.02
+          - 0.03
+          - 0.05
+      trainer.num_boost_round:
+        space: grid_search
+        values:
+          - 50
+          - 100
+          - 350
+  trainer:
+    type: lightgbm_trainer
+  model_type: gbm

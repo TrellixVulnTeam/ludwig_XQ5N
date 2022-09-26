@@ -1,0 +1,12 @@
+config:
+  combiner:
+    type: concat
+  defaults:
+    number:
+      preprocessing:
+        normalization: zscore
+  trainer:
+    batch_size: 88
+    decay: false
+    decay_rate: 0.566687357355322
+    learning_rate: 0.002454621865308289

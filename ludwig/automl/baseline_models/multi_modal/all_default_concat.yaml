@@ -1,0 +1,7 @@
+description: Basic neural network using all features.
+model_category: MULTI_MODAL
+contains_hyperopt: false
+uses_pretrained_model: false
+config:
+  combiner:
+    type: concat

@@ -1,0 +1,12 @@
+config:
+  combiner:
+    type: tabnet
+  defaults:
+    number:
+      preprocessing:
+        normalization: zscore
+  trainer:
+    batch_size: 246
+    decay: true
+    decay_rate: 0.6674105914906275
+    learning_rate: 0.003400132874417727

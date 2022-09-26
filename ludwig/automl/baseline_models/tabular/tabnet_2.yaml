@@ -1,0 +1,12 @@
+config:
+  combiner:
+    type: tabnet
+  defaults:
+    number:
+      preprocessing:
+        normalization: null
+  trainer:
+    batch_size: 1187
+    decay: false
+    decay_rate: 0.4826222564556144
+    learning_rate: 0.044092715834446315

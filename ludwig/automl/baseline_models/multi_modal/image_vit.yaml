@@ -1,0 +1,10 @@
+description: Pretrained VIT model.
+model_category: IMAGE
+contains_hyperopt: false
+uses_pretrained_model: true
+config:
+  defaults:
+    image:
+      encoder:
+        type: vit
+        trainable: true
